@@ -1,4 +1,4 @@
-ChatHub
+<h1>ChatHub</h1>
 ChatHub is an open-source, real-time chat application designed to provide seamless messaging for users. It is built with modern web technologies to ensure high performance, scalability, and ease of integration.
 Features
 Real-Time Messaging: Enables instant communication between users using SignalR.
