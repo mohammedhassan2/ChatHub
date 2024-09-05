@@ -1,0 +1,77 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.SignalR.Client
+
+<audio id="notification" src="/media/notification.mp3" />
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudText Typo="Typo.h6" Class="ml-4">Chat Hub</MudText>
+        <MudSpacer />
+        <LoginDisplay />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        <MudToolBar Gutters>
+            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick=DrawerToggle Class="ml-3" />
+        </MudToolBar>
+        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            <CascadingValue Value="hubConnection">
+                @Body
+            </CascadingValue>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen;
+    private HubConnection hubConnection;
+    private string CurrentUserId { get; set; }
+
+    private bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
+
+    private void DrawerToggle() => _drawerOpen = !_drawerOpen;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // إعداد الاتصال بـ SignalR
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("/signalRHub"))
+            .Build();
+
+        // بدء الاتصال
+        await hubConnection.StartAsync();
+
+        // الاشتراك في استقبال الإشعارات
+        hubConnection.On<string, string, string>("ReceiveChatNotification", HandleReceiveChatNotification);
+
+        // الحصول على معرف المستخدم الحالي
+        var state = await StateProvider.GetAuthenticationStateAsync();
+        CurrentUserId = state.User.Claims.FirstOrDefault(a => a.Type == "sub")?.Value;
+    }
+
+    private void HandleReceiveChatNotification(string message, string receiverUserId, string senderUserId)
+    {
+        if (CurrentUserId == receiverUserId)
+        {
+            JSRuntime.InvokeVoidAsync("PlayAudio", "notification");
+            Snackbar.Add(message, Severity.Info, config =>
+            {
+                config.VisibleStateDuration = 10000;
+                config.HideTransitionDuration = 500;
+                config.ShowTransitionDuration = 500;
+                config.Action = "Chat?";
+                config.ActionColor = Color.Info;
+                config.Onclick = snackbar =>
+                {
+                    Navigation.NavigateTo($"chat/{senderUserId}");
+                    return Task.CompletedTask;
+                };
+            });
+        }
+    }
+}
