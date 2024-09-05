@@ -1,78 +1,27 @@
-<h1>ChatHub</h1>
-ChatHub is an open-source, real-time chat application designed to provide seamless messaging for users. It is built with modern web technologies to ensure high performance, scalability, and ease of integration.
-Features
-Real-Time Messaging: Enables instant communication between users using SignalR.
-Multi-Channel Support: Create and join multiple chat channels.
-Notifications: Real-time alerts for new messages and events.
-Responsive Design: Interactive user interface built with Blazor.
-User Management: Secure login, registration, and profile management using IdentityServer.
+# Chat Hub with SignalR and Identity
 
-Built With
-SignalR - Real-time communication.
-Entity Framework Core - Data management.
-IdentityServer - Authentication and authorization.
-Blazor - Interactive UI.
-Getting Started
-Follow these steps to run ChatHub locally.
+Building a Complete Chat Application in Blazor WebAssembly 8.0 with SignalR and Identity. UI is taken care by MudBlazor Component Library.
 
-Prerequisites
-.NET 6 SDK
-SQL Server or a compatible database
-Installation
-1. Clone the Repository:
-git clone https://github.com/mohammedhassan2/chathub.git
-cd chathub
+![](https://media.giphy.com/media/Cn0cUz5MufPhyBFlAn/source.gif)
 
-2. Install Dependencies:
-dotnet restore
+Let's Build a Chat Application with Blazor using Identity and SignalR.
 
-3. Run the Application:
-   dotnet run
-4. Access the Application: Open your browser and go to http://localhost:7006
+I am compiling this guide to cover each and everything you would need to know while building Realtime Chat Applications with Blazor that is linked to Microsoft Identity as well. This enables us to have a one-on-one chat with the registered users in our system. 
 
-Let's make the README more concise and to the point while maintaining a professional look.
+Here are the topics/features covered.
 
-ChatHub
-ChatHub is an open-source, real-time chat application designed to provide seamless messaging for users. It is built with modern web technologies to ensure high performance, scalability, and ease of integration.
+- Blazor WebAssembly 8.0 with ASP.NET Core Hosted Model.
+- MudBlazor Integrations – Super cool UI.
+- SignalR Integrations – Real-time Messaging with Hubs.
+- Cascade Parameters.
+- Chat with Registered Users.
+- Chats get stored to Database via EFCore.
+- Notification Popup for new messages.
+- Notification Tone for new messages.
+- Demonstration
+- Complete Source Code Available.
 
-Features
-Real-Time Messaging: Enables instant communication between users using SignalR.
-Multi-Channel Support: Create and join multiple chat channels.
-Notifications: Real-time alerts for new messages and events.
-Responsive Design: Interactive user interface built with Blazor.
-User Management: Secure login, registration, and profile management using IdentityServer.
-Built With
-SignalR - Real-time communication.
-Entity Framework Core - Data management.
-IdentityServer - Authentication and authorization.
-Blazor - Interactive UI.
-Getting Started
-Follow these steps to run ChatHub locally.
+Read the entire guide here :
+https://codewithmukesh.com/blog/realtime-chat-application-with-blazor
 
-Prerequisites
-.NET 6 SDK
-SQL Server or a compatible database
-Installation
-Clone the Repository:
-
-bash
-Copy code
-git clone https://github.com/yourusername/chathub.git
-cd chathub
-Install Dependencies:
-
-bash
-Copy code
-dotnet restore
-Run the Application:
-
-bash
-Copy code
-dotnet run
-Access the Application: Open your browser and go to http://localhost:5000.
-
-Contributing
-We welcome contributions! Please fork the repository, create a branch, and submit a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
+<a href="https://www.buymeacoffee.com/codewithmukesh" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200"  style="height: 60px !important;width: 200px !important;" ></a>
