@@ -23,5 +23,3 @@ Here are the topics/features covered.
 
 Read the entire guide here :
 https://codewithmukesh.com/blog/realtime-chat-application-with-blazor
-
-<a href="https://www.buymeacoffee.com/codewithmukesh" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200"  style="height: 60px !important;width: 200px !important;" ></a>
